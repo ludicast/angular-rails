@@ -7,17 +7,17 @@ require "angular-rails/version"
 Gem::Specification.new do |s|
   s.name        = "angular-rails"
   s.version     = AngularRails::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of AngularRails."
-  s.description = "TODO: Description of AngularRails."
+  s.authors     = ["Nate Kidwell"]
+  s.email       = ["nate@ludicast.com"]
+  s.homepage    = "http://github.com/ludicast/angu/lar-rails"
+  s.summary     = "Helpers for angularjs in a rails project"
+  s.description = "Helpers for angularjs in a rails project (ripped from backbone-rails)"
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
 
-  s.add_dependency "rails", "~> 3.1.1"
-  # s.add_dependency "jquery-rails"
+  s.add_dependency "rails", "~> 3.1.0"
+  s.add_dependency "coffee-script", '~> 2.2.0'
 
-  s.add_development_dependency "sqlite3"
+  s.add_development_dependency "mongoid"
 end
