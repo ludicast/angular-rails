@@ -1,7 +1,11 @@
 require 'test_helper'
 
 class AngularRailsTest < ActiveSupport::TestCase
-  test "truth" do
-    assert_kind_of Module, AngularRails
+  def setup
+    @app = Dummy::Application
+  end
+  
+  test "angular.js is found as an asset" do
+    assert_not_nil @app.assets["angular"]
   end
 end
