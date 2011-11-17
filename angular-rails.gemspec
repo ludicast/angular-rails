@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.summary     = "Helpers for angularjs in a rails project"
   s.description = "Helpers for angularjs in a rails project (ripped from backbone-rails)"
 
-  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.files = Dir["{app,config,db,lib,vendor}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency "rails", "~> 3.1.0"
