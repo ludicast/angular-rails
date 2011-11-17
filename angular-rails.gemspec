@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = AngularRails::VERSION
   s.authors     = ["Nate Kidwell"]
   s.email       = ["nate@ludicast.com"]
-  s.homepage    = "http://github.com/ludicast/angu/lar-rails"
+  s.homepage    = "http://github.com/ludicast/angular-rails"
   s.summary     = "Helpers for angularjs in a rails project"
   s.description = "Helpers for angularjs in a rails project (ripped from backbone-rails)"
 
