@@ -1,6 +1,5 @@
 require 'generators/angular/resource_helpers'
 
-puts "loaded install generator"
 
 module Angular
   module Generators
