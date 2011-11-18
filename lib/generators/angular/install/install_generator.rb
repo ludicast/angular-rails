@@ -15,9 +15,10 @@ module Angular
 				:desc => "Skip Git ignores and keeps"
                                       
       def inject_angular
-        inject_into_file "app/assets/javascripts/application.js", :before => "//= require_tree" do
+        res = append_to_file "app/assets/javascripts/application.js" do
           "//= require angular\n//= require_tree ./angular\n"
         end
+				puts res #{res}""
       end
     
       def create_dir_layout
