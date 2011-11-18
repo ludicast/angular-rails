@@ -25,7 +25,7 @@ class InstallGeneratorTest < Rails::Generators::TestCase
   test "Assert angular directory structure is created" do
     run_generator
     
-    %W{controllers}.each do |dir|
+    %W{controllers filters services widgets}.each do |dir|
       assert_directory "#{angular_path}/#{dir}"
       assert_file "#{angular_path}/#{dir}/.gitkeep"
     end
@@ -34,7 +34,7 @@ class InstallGeneratorTest < Rails::Generators::TestCase
   test "Assert no gitkeep files are created when skipping git" do
     run_generator [destination_root, "--skip-git"]
     
-    %W{controllers}.each do |dir|
+    %W{controllers filters services widgets}.each do |dir|
       assert_directory "#{angular_path}/#{dir}"
       assert_no_file "#{angular_path}/#{dir}/.gitkeep"
     end
