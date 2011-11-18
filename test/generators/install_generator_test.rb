@@ -15,13 +15,6 @@ class InstallGeneratorTest < Rails::Generators::TestCase
     super
   end
   
-  test "Assert application require is properly setup for two word application name" do
-    Rails.application.class.stubs(:name).returns("FooBar::Application")
-    run_generator
-    
-    assert_file "app/assets/javascripts/application.js", /require angular\/foo_bar/
-  end
-  
   test "Assert angular directory structure is created" do
     run_generator
     
@@ -40,15 +33,11 @@ class InstallGeneratorTest < Rails::Generators::TestCase
     end
   end
   
-  test "Assert application.js require angular.js and dummy.js" do
+  test "Assert application.js require angular.js and angular directory" do
     run_generator
     
     assert_file "app/assets/javascripts/application.js" do |application|
-      assert_match /require angular\/dummy/, application
-      
-      %W{angular}.each do |require|
-        assert_match /#{require}/, application
-      end
+      assert_match /require angular(.*)require_tree \.\/angular/m, application
     end
   end  
   

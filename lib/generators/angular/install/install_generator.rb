@@ -16,7 +16,7 @@ module Angular
                                       
       def inject_angular
         inject_into_file "app/assets/javascripts/application.js", :before => "//= require_tree" do
-          "//= require angular\n//= require angular/#{application_name.underscore}\n"
+          "//= require angular\n//= require_tree ./angular\n"
         end
       end
     
