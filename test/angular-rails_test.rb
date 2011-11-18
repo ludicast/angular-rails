@@ -1,11 +1,11 @@
 require 'test_helper'
 
-describe "asset pipeline" do
-	before do
-		@app = Dummy::Application
-	end
-	
-	it "includes angular as an asset" do
-		 @app.assets["angular"].wont_be_nil
-	end
+class AngularRailsTest < ActiveSupport::TestCase
+  def setup
+    @app = Dummy::Application
+  end
+  
+  test "angular.js is found as an asset" do
+    assert_not_nil @app.assets["angular"]
+  end
 end

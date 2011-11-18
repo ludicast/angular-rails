@@ -3,8 +3,6 @@ require 'generators/generators_test_helper'
 require "generators/angular/install/install_generator"
 require 'mocha'
 
-
-
 class InstallGeneratorTest < Rails::Generators::TestCase
   include GeneratorsTestHelper
   tests Angular::Generators::InstallGenerator
