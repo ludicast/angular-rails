@@ -1,4 +1,4 @@
-# Angular-Rails ![Build Status](https://secure.travis-ci.org/ludicast/angular-rails.png)](http://travis-ci.org/ludicast/angular-rails)
+# Angular-Rails [![Build Status](https://secure.travis-ci.org/ludicast/angular-rails.png)](http://travis-ci.org/ludicast/angular-rails)
 
 Easily setup and use angularjs (0.9.19) with rails 3.1
 
