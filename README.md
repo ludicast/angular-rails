@@ -1,25 +1,25 @@
-# Angular-Rails [![Build Status](https://secure.travis-ci.org/ludicast/angular-rails.png)](http://travis-ci.org/ludicast/angular-rails)
+# Angular-Rails - The HTML6 Shim [![Build Status](https://secure.travis-ci.org/ludicast/angular-rails.png)](http://travis-ci.org/ludicast/angular-rails)
 
-Easily setup and use angularjs (0.9.19) with rails 3.1
+This project lets you use angularjs with the yummy Rails 3.1 asset pipeline.  The eventual goal is to have it integrate scaffolding with test support.
 
 ## Warning!! Code-Theft :)
 
 This README (and some of the accompanying code) is being copied/pasted/ripped from the [http://github.com/codebrew/backbone-rails](backbone-rails) project to help bootstrap things.  Later on I'll cut the cord.
 
-## Rails 3.1 setup
-This gem requires the use of rails 3.1, coffeescript and the new rails asset pipeline provided by sprockets.
+## Requirements
 
-This gem vendors the latest stable version of angular.js for Rails 3.1 and greater. This file will be added to the asset pipeline and available for you to use. 
-    
+* Rails 3.1 - For the asset pipeline
+* Coffeescript - Because more LOC means more bugs
+* Ruby 1.9.2 - Because I like the syntax enhancements (but if there's an outcry I can maybe support 1.8.7)
+
 ### Installation
 
-In your Gemfile, add this line:
+Add to your gemfile:
 
     gem "rails-angular"
   
-Then run the following commands:
+An bundle away.  To bootstrap things then type:
 
-    bundle install
     rails g angular:install
 
 ### Layout and namespacing
