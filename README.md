@@ -66,7 +66,7 @@ You will have those routes set up.  Note that this class will need to be injecte
 
     PhotoGalleryCtrl.$inject = ['$route', '$xhr']
 
-This is pretty much an adaption of the routing code at a demo of [https://github.com/centresource/angularjs_rails_demo](angular with Rails).
+This is pretty much an adaption of the routing code at a demo by [https://github.com/centresource/angularjs\_rails\_demo](Daniel Nelson).
 
 ## Example Usage
 
