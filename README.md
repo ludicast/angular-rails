@@ -4,7 +4,7 @@ This project lets you use angularjs with the yummy Rails 3.1 asset pipeline.  Th
 
 ## Warning!! Code-Theft :)
 
-This README (and some of the accompanying code) is being copied/pasted/ripped from the [http://github.com/codebrew/backbone-rails](backbone-rails) project to help bootstrap things.  Later on I'll cut the cord.
+This README (and some of the accompanying code) is being copied/pasted/ripped from the [backbone-rails](http://github.com/codebrew/backbone-rails) project to help bootstrap things.  Later on I'll cut the cord.
 
 ## Requirements
 
@@ -66,7 +66,7 @@ You will have those routes set up.  Note that this class will need to be injecte
 
     PhotoGalleryCtrl.$inject = ['$route', '$xhr']
 
-This is pretty much an adaption of the routing code at a demo by [https://github.com/centresource/angularjs\_rails\_demo](Daniel Nelson).
+This is pretty much an adaption of the routing code at a demo by [Daniel Nelson](https://github.com/centresource/angularjs_rails_demo).
 
 ## Example Usage
 
