@@ -18,7 +18,7 @@ Add to your gemfile:
 
     gem "rails-angular"
   
-An bundle away.  To bootstrap things then type:
+And bundle away.  To bootstrap things then type:
 
     rails g angular:install
 
@@ -36,6 +36,12 @@ It will also add to the application.js file the appropriate requires.
 ## Generators
 
 angular-rails provides a simple generator to help get you started using angular.js with rails 3.1.  The generators will only create client side code (javascript).
+
+So far we have a controller generator which generates a controller file if you rum
+
+    rails g angular:controller MODELNAME
+
+This file is empty except for the class declaration, but I will be adding some RESTful controller functionality shortly.
 
 ## Angular-Helpers
 
@@ -55,6 +61,12 @@ In an attempt to DRY up angular apps I added an angular-helpers coffeescript fil
             template: '<%= asset_path("photos.html") %>'
             controller: PhotosCtrl
         }
+
+You will have those routes set up.  Note that this class will need to be injected with both the $xhr and the $route object like so:
+
+    PhotoGalleryCtrl.$inject = ['$route', '$xhr']
+
+This is pretty much an adaption of the routing code at a demo of [https://github.com/centresource/angularjs_rails_demo](angular with Rails).
 
 ## Example Usage
 
