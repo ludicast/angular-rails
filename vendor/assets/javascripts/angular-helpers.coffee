@@ -1,26 +1,22 @@
-class @BaseRouter
-  constructor:($route, $xhr)->
-    $xhr.defaults.headers.post['Content-Type'] = 'application/json'
-    $xhr.defaults.headers.put['Content-Type'] = 'application/json'
-
-    token = $("meta[name='csrf-token']").attr "content"
-    $xhr.defaults.headers.post['X-CSRF-Token'] = token
-    $xhr.defaults.headers.put['X-CSRF-Token'] = token
-    $xhr.defaults.headers['delete']['X-CSRF-Token'] = token
-    @router = $route
-
-		console.log "loaded"
-
-  initRoutes:(routes)->
+class @Router
+  initRoutes:(router, routes)->
     for routeName, info of routes
       if routeName is "default"
-        @router.otherwise redirectTo: info
+        router.otherwise redirectTo: info
       else
-        @router.when routeName,
+        router.when routeName,
           template: info.template
           controller: info.controller
-    console.log @router
 
-BaseRouter.$inject = ['$route', '$xhr']
+  setupXhr:(xhr)->
+    xhr.defaults.headers.post['Content-Type'] = 'application/json'
+    xhr.defaults.headers.put['Content-Type'] = 'application/json'
 
-@router =  (new angular.scope()).$new(BaseRouter)
+    token = $("meta[name='csrf-token']").attr("content")
+    xhr.defaults.headers.post['X-CSRF-Token'] = token
+    xhr.defaults.headers.put['X-CSRF-Token'] = token
+    xhr.defaults.headers['delete']['X-CSRF-Token'] = token
+
+  constructor:($route, $xhr)->
+    @setupXhr($xhr)
+    @initRoutes $route, @routes()
