@@ -37,6 +37,25 @@ It will also add to the application.js file the appropriate requires.
 
 angular-rails provides a simple generator to help get you started using angular.js with rails 3.1.  The generators will only create client side code (javascript).
 
+## Angular-Helpers
+
+In an attempt to DRY up angular apps I added an angular-helpers coffeescript file to the assets path.  So far all it has is a Router class that sets up some defaults.  If you subclass it in Coffeescript like so:
+
+    class @PhotoGalleryCtrl extends Router
+      routes:->
+        {
+          default: '/photographers'
+          '/photographers':
+            template: '<%= asset_path("photographers.html") %>'
+            controller: PhotographersCtrl
+          '/photographers/:photographer_id/galleries':
+            template: '<%= asset_path("galleries.html") %>'
+            controller: GalleriesCtrl
+          '/photographers/:photographer_id/galleries/:gallery_id/photos':
+            template: '<%= asset_path("photos.html") %>'
+            controller: PhotosCtrl
+        }
+
 ## Example Usage
 
 Created a new rails 3.1 application called `blog`.
