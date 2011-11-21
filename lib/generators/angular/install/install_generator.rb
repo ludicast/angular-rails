@@ -1,6 +1,5 @@
 require 'generators/angular/resource_helpers'
 
-
 module Angular
   module Generators
     class InstallGenerator < Rails::Generators::Base
@@ -14,10 +13,9 @@ module Angular
 				:desc => "Skip Git ignores and keeps"
                                       
       def inject_angular
-        res = append_to_file "app/assets/javascripts/application.js" do
-          "//= require angular\n//= require_tree ./angular\n"
+        append_to_file "app/assets/javascripts/application.js" do
+          "//= require angular.min\n//= require angular-helpers\n//= require_tree ./angular\n"
         end
-				puts res #{res}""
       end
     
       def create_dir_layout

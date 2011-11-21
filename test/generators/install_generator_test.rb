@@ -37,7 +37,7 @@ class InstallGeneratorTest < Rails::Generators::TestCase
     run_generator
     
     assert_file "app/assets/javascripts/application.js" do |application|
-      assert_match /require angular(.*)require_tree \.\/angular/m, application
+      assert_match /require angular.min(.*)require angular-helpers(.*)require_tree \.\/angular/m, application
     end
   end  
   
