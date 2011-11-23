@@ -6,9 +6,8 @@ class ControllerGeneratorTest < Rails::Generators::TestCase
   include GeneratorsTestHelper
   tests Angular::Generators::ControllerGenerator
   
-  test "simple model" do
+  test "simple controller" do
     run_generator %w(Post)
-   	puts angular_path 
     assert_file "#{angular_path}/controllers/posts.coffee" do |controller|
       controller_class = Regexp.escape("class @PostsController")
       assert_match /#{controller_class}/, controller

@@ -24,7 +24,11 @@ module Angular
           create_file "app/assets/javascripts/angular/#{dir}/.gitkeep" unless options[:skip_git]
         end
       end
-    
+   
+			def create_spec_dir_layout
+				 empty_directory angular_spec_path
+				 create_file "#{angular_spec_path}/.gitkeep" unless options[:skip_git]
+			end
     end
   end
 end

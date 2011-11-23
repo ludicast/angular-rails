@@ -12,6 +12,10 @@ module Angular
 			def angular_path
 				"app/assets/javascripts/angular"
 			end 
+
+			def angular_spec_path
+				"spec/javascripts/angular"
+			end 
     end
   end
 end
