@@ -20,3 +20,21 @@ class @Router
   constructor:($route, $xhr)->
     @setupXhr($xhr)
     @initRoutes $route, @routes()
+
+@resourceService = (serviceName, path, resourceTypes...)->
+	if resourceTypes.length is 0
+		resourceTypes.push 'index', 'create', 'update', 'destroy'
+	commandHash = {}
+	for type in resourceTypes
+		commandHash[type] = switch type
+			when 'index'
+				{ method:'GET', isArray:true }
+			when 'create'
+				{ method: 'POST' }
+			when 'update'
+				{ method: 'PUT' }
+			when 'destroy'
+				{ method: 'DELETE' }
+
+	angular.service serviceName, ($resource)->
+		$resource path, {}, commandHash
