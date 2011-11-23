@@ -6,11 +6,13 @@ This project lets you use angularjs with the yummy Rails 3.1 asset pipeline.  Th
 
 This README (and some of the accompanying code) is being copied/pasted/ripped from the [backbone-rails](http://github.com/codebrew/backbone-rails) project to help bootstrap things.  Later on I'll cut the cord.
 
-## Requirements
+## Assumptions
 
 * Rails 3.1 - For the asset pipeline
-* Coffeescript - Because more LOC means more bugs
-* Ruby 1.9.2 - Because I like the syntax enhancements (but if there's an outcry I can maybe support 1.8.7)
+* Coffeescript - Because less LOC means less bugs, plus it is the Rails Way, like it or not.
+* Ruby 1.9.2 - Because I like the syntax enhancements (but if there's an outcry I can support 1.8.7)
+* RSpec - This is a loose requirement, but all specs generated will be, well rspec.  Once we have end-to-end coverage, someone can add a patch for testunit (or mini*) support.
+* RESTful controllers - another loose requirement, but it will help things be smoother for you.  The goal is as little friction as possible between the front and back ends, without resorting to Node.js :).
 
 ### Installation
 
@@ -45,7 +47,7 @@ This file is empty except for the class declaration, but I will be adding some R
 
 ## Angular-Helpers
 
-In an attempt to DRY up angular apps I added an angular-helpers coffeescript file to the assets path.  So far all it has is a Router class that sets up some defaults.  If you subclass it in Coffeescript like so:
+In an attempt to DRY up angular apps I added an angular-helpers coffeescript file to the assets path.  So far it has a Router superclass for your main application router.  If you subclass it in Coffeescript like so:
 
     class @PhotoGalleryCtrl extends Router
       routes:->
@@ -62,11 +64,20 @@ In an attempt to DRY up angular apps I added an angular-helpers coffeescript fil
             controller: PhotosCtrl
         }
 
-You will have those routes set up.  Note that this class will need to be injected with both the $xhr and the $route object like so:
+You will have those routes set up.  All this class needs is a member function called `routes` that returns a hash of routing information.
+
+Note that this class will need to be injected with both the $xhr and the $route object like so:
 
     PhotoGalleryCtrl.$inject = ['$route', '$xhr']
 
-This is pretty much an adaption of the routing code at a demo by [Daniel Nelson](https://github.com/centresource/angularjs_rails_demo).
+This is because it sets us sowe CSRF preventions using $xhr as well.  All this is pretty much ripped from a demo by [Daniel Nelson](https://github.com/centresource/angularjs_rails_demo).
+
+Another thing added is a `resourceService` function.  This function is called like:
+
+	resourceService 'Photos', 'photographers/:photographer_id/galleries/:gallery_id/photos', 'index'
+	resourceService 'SelectedPhotos', 'selected_photos/:selected_photo_id'
+     
+This sets up angular services for at the listed paths.  Also add to the end all the actions that you want it to support.  So far the accepted actions are 'index', 'update', 'create' and 'destroy'.  If you leave off all actions, it will automatically assume that you want to support all 4.
 
 ## Example Usage
 
