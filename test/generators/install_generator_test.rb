@@ -23,14 +23,21 @@ class InstallGeneratorTest < Rails::Generators::TestCase
       assert_file "#{angular_path}/#{dir}/.gitkeep"
     end
   end
+
+  test "Assert angular spec directory structure is created" do
+    run_generator
+    assert_directory "#{angular_spec_path}"
+    assert_file "#{angular_spec_path}/.gitkeep"
+  end
   
+
   test "Assert no gitkeep files are created when skipping git" do
     run_generator [destination_root, "--skip-git"]
     
     %W{controllers filters services widgets}.each do |dir|
-      assert_directory "#{angular_path}/#{dir}"
       assert_no_file "#{angular_path}/#{dir}/.gitkeep"
     end
+		assert_no_file "#{angular_spec_path}/.gitkeep"
   end
   
   test "Assert application.js require angular.js and angular directory" do
