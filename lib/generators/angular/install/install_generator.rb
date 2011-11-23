@@ -20,8 +20,8 @@ module Angular
     
       def create_dir_layout
         %W{controllers filters services widgets}.each do |dir|
-          empty_directory "app/assets/javascripts/angular/#{dir}" 
-          create_file "app/assets/javascripts/angular/#{dir}/.gitkeep" unless options[:skip_git]
+          empty_directory "#{angular_path}/#{dir}" 
+          create_file "#{angular_path}/#{dir}/.gitkeep" unless options[:skip_git]
         end
       end
    
