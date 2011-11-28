@@ -18,7 +18,7 @@ This README (and some of the accompanying code) is being copied/pasted/ripped fr
 
 Add to your gemfile:
 
-    gem "rails-angular"
+    gem "angular-rails"
   
 And bundle away.  To bootstrap things then type:
 
