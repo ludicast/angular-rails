@@ -38,3 +38,6 @@ class @Router
 
 	angular.service serviceName, ($resource)->
 		$resource path, {}, commandHash
+
+angular.element(document).ready ->
+	angular.compile(document)().$apply()

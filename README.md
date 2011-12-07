@@ -79,6 +79,8 @@ Another thing added is a `resourceService` function.  This function is called li
      
 This sets up angular services for at the listed paths.  Also add to the end all the actions that you want it to support.  So far the accepted actions are 'index', 'update', 'create' and 'destroy'.  If you leave off all actions, it will automatically assume that you want to support all 4.
 
+A final thing added to this helper file is initialization of angularjs.  This way, if angularjs is added to asset pipeline, no `ng:autobind` tag needs to be added.
+
 ## Example Usage
 
 Created a new rails 3.1 application called `blog`.
