@@ -70,7 +70,9 @@ Note that this class will need to be injected with both the $xhr and the $route 
 
     PhotoGalleryCtrl.$inject = ['$route', '$xhr']
 
-This is because it sets us sowe CSRF preventions using $xhr as well.  All this is pretty much ripped from a demo by [Daniel Nelson](https://github.com/centresource/angularjs_rails_demo).
+This is because it sets us some CSRF preventions using $xhr as well.  Note that this information gets thrown into the controller scope, so `@$xhr` and `@$router` are available in inheriting controllers as well (regardless if inheriting explicitly (through `extends`) or implictly (by being nested in a deeper view tag)).
+
+Much of this is ripped from a demo by [Daniel Nelson](https://github.com/centresource/angularjs_rails_demo).
 
 Another thing added is a `resourceService` function.  This function is called like:
 
