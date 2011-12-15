@@ -7,6 +7,7 @@ class @Router
         @$route.when routeName,
           template: info.template
           controller: info.controller
+    @$route.parent @
 
   setupXhr:->
     @$xhr.defaults.headers.post['Content-Type'] = 'application/json'
