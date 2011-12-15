@@ -86,15 +86,15 @@ This helper file adds some features to help parse results.
 * An `AngularModel` class.  All classes that inherit from this may be used to wrap the results returned from angular.  They also allow you to map hasMany associations like so:
 
     class @Todo extends AngularModel
-			schedule:(procrastinationTime)-> # postpone to future 
+      schedule:(procrastinationTime)-> # postpone to future 
 
     class @TodoList extends AngularModel
-	    hasMany:
-		    todos: Todo
+      hasMany:
+        todos: Todo
 
 * An `autowrap` function added to global namespace.  This function takes a class to wrap the resource result in and optionally takes a function to pass it in to.  This function is passed in as the success function like so:
 
-  @all_todo_lists = TodoListService.get {}, autowrap(TodoList)
+    @all_todo_lists = TodoListService.get {}, autowrap(TodoList)
 
 A final thing added to this helper file is initialization of angularjs.  This way, if angularjs is added to asset pipeline, no `ng:autobind` tag needs to be (or should be) added.
 
