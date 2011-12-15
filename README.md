@@ -83,7 +83,7 @@ This sets up angular services for the listed paths.  Also add to the end all the
 
 This helper file adds some features to help parse results.
 
-* An `AngularModel` class.  All classes that inherit from this may be used to wrap the results returned from angular.  They also allow you to map hasMany associations like so:
+* An `AngularModel` class.  All classes that inherit from this may be used to wrap the results returned from angular.  They also allow you to map hasMany associations like so (haven't needed belongsTo yet myself):
 
 		class @Todo extends AngularModel
 			schedule:(procrastinationTime)-> # postpone to future 
@@ -92,7 +92,7 @@ This helper file adds some features to help parse results.
 			hasMany:
 				todos: Todo
 
-* An `autowrap` function added to global namespace.  This function takes a class to wrap the resource result in and optionally takes a function to pass it in to.  This function is passed in as the success function like so:
+* An `autowrap` function added to global namespace.  This function takes a class to wrap the resource result in and optionally takes a function to pass it in to (i.e. if you need a real success function).  This function is passed in as the success function like so:
 
 		@all_todo_lists = TodoListService.get {}, autowrap(TodoList)
 
