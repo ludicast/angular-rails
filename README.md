@@ -79,9 +79,9 @@ Another thing added is a `resourceService` function.  This function is called li
 	resourceService 'Photos', 'photographers/:photographer_id/galleries/:gallery_id/photos', 'index'
 	resourceService 'SelectedPhotos', 'selected_photos/:selected_photo_id'
      
-This sets up angular services for at the listed paths.  Also add to the end all the actions that you want it to support.  So far the accepted actions are 'index', 'update', 'create' and 'destroy'.  If you leave off all actions, it will automatically assume that you want to support all 4.
+This sets up angular services for the listed paths.  Also add to the end all the actions that you want it to support.  So far the accepted actions are 'index', 'update', 'create' and 'destroy'.  If you leave off all actions, it will automatically assume that you want to support all 4.
 
-A final thing added to this helper file is initialization of angularjs.  This way, if angularjs is added to asset pipeline, no `ng:autobind` tag needs to be added.
+A final thing added to this helper file is initialization of angularjs.  This way, if angularjs is added to asset pipeline, no `ng:autobind` tag needs to be (or should be) added.
 
 ## Example Usage
 

@@ -1,6 +1,5 @@
 class @Router
   initRoutes:(routes)->
-    console.log "oooooss"
     for routeName, info of routes
       if routeName is "default"
         @$route.otherwise redirectTo: info
@@ -24,21 +23,37 @@ class @Router
 
 @resourceService = (serviceName, path, resourceTypes...)->
 	if resourceTypes.length is 0
-		resourceTypes.push 'index', 'create', 'update', 'destroy'
+		resourceTypes.push 'index', 'create', 'update', 'destroy', 'show'
 	commandHash = {}
 	for type in resourceTypes
 		commandHash[type] = switch type
 			when 'index'
 				{ method:'GET', isArray:true }
+			when 'show'
+				{ method:'GET', isArray:false }
 			when 'create'
 				{ method: 'POST' }
 			when 'update'
 				{ method: 'PUT' }
 			when 'destroy'
 				{ method: 'DELETE' }
-
+	
 	angular.service serviceName, ($resource)->
 		$resource path, {}, commandHash
 
 angular.element(document).ready ->
 	angular.compile(document)().$apply()
+
+class @AngularModel
+	initialize:->
+		if @hasMany
+			for name, clazz of @hasMany
+				for obj in @[name]
+					obj.__proto__ = new clazz()
+					if obj instanceof AngularModel
+						obj.initialize()
+
+@autowrap =(clazz)->
+	(result)->
+		result.__proto__ = new clazz()
+		result.initialize()
