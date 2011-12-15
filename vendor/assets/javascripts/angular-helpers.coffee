@@ -53,7 +53,9 @@ class @AngularModel
 					if obj instanceof AngularModel
 						obj.initialize()
 
-@autowrap =(clazz)->
+@autowrap = (clazz, callback)->
 	(result)->
 		result.__proto__ = new clazz()
 		result.initialize()
+		if callback
+			callback(result)
