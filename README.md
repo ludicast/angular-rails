@@ -81,6 +81,21 @@ Another thing added is a `resourceService` function.  This function is called li
      
 This sets up angular services for the listed paths.  Also add to the end all the actions that you want it to support.  So far the accepted actions are 'index', 'update', 'create' and 'destroy'.  If you leave off all actions, it will automatically assume that you want to support all 4.
 
+This helper file adds some features to help parse results.
+
+* An `AngularModel` class.  All classes that inherit from this may be used to wrap the results returned from angular.  They also allow you to map hasMany associations like so:
+
+    class @Todo extends AngularModel
+			schedule:(procrastinationTime)-> # postpone to future 
+
+    class @TodoList extends AngularModel
+	    hasMany:
+		    todos: Todo
+
+* An `autowrap` function added to global namespace.  This function takes a class to wrap the resource result in and optionally takes a function to pass it in to.  This function is passed in as the success function like so:
+
+  @all_todo_lists = TodoListService.get {}, autowrap(TodoList)
+
 A final thing added to this helper file is initialization of angularjs.  This way, if angularjs is added to asset pipeline, no `ng:autobind` tag needs to be (or should be) added.
 
 ## Example Usage
