@@ -33,6 +33,8 @@ Running `rails g angular:install` will create the following directory structure 
     services/
     widgets/
 
+It will also generate a `templates/` directory under app assets, where view templates can be stored.  This lets you use haml, etc. for your angular views.
+
 It will also add to the application.js file the appropriate requires.
 
 ## Generators

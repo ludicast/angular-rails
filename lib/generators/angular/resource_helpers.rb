@@ -9,8 +9,16 @@ module Angular
         end
     	end
   		
+			def assets_path
+				"app/assets"
+			end
+
 			def angular_path
-				"app/assets/javascripts/angular"
+				"#{assets_path}/javascripts/angular"
+			end 
+
+			def angular_templates_path
+				"#{assets_path}/templates"
 			end 
 
 			def angular_spec_path

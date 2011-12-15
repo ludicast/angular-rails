@@ -18,13 +18,18 @@ module Angular
         end
       end
     
-      def create_dir_layout
+      def create_angular_javascript_dir_layout
         %W{controllers filters services widgets}.each do |dir|
           empty_directory "#{angular_path}/#{dir}" 
           create_file "#{angular_path}/#{dir}/.gitkeep" unless options[:skip_git]
         end
       end
-   
+  
+			def create_templates_dir_layout
+				empty_directory angular_templates_path
+				create_file "#{angular_templates_path}/.gitkeep" unless options[:skip_git]
+			end
+
 			def create_spec_dir_layout
 				 empty_directory angular_spec_path
 				 create_file "#{angular_spec_path}/.gitkeep" unless options[:skip_git]

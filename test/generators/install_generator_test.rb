@@ -14,7 +14,13 @@ class InstallGeneratorTest < Rails::Generators::TestCase
     
     super
   end
-  
+
+  test "Assert template directory structure is created" do
+    run_generator
+    assert_directory angular_templates_path
+    assert_file "#{angular_templates_path}/.gitkeep"
+  end
+
   test "Assert angular directory structure is created" do
     run_generator
     
@@ -26,7 +32,7 @@ class InstallGeneratorTest < Rails::Generators::TestCase
 
   test "Assert angular spec directory structure is created" do
     run_generator
-    assert_directory "#{angular_spec_path}"
+    assert_directory angular_spec_path
     assert_file "#{angular_spec_path}/.gitkeep"
   end
   
@@ -38,6 +44,7 @@ class InstallGeneratorTest < Rails::Generators::TestCase
       assert_no_file "#{angular_path}/#{dir}/.gitkeep"
     end
 		assert_no_file "#{angular_spec_path}/.gitkeep"
+		assert_no_file "#{assets_path}/templates/.gitkeep"
   end
   
   test "Assert application.js require angular.js and angular directory" do
