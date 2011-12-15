@@ -50,12 +50,11 @@ class @AngularModel
 			for name, clazz of @hasMany
 				for obj in @[name]
 					obj.__proto__ = new clazz()
-					if obj instanceof AngularModel
-						obj.initialize()
+					obj.initialize?()
 
 @autowrap = (clazz, callback)->
 	(result)->
 		result.__proto__ = new clazz()
-		result.initialize()
+		result.initialize?()
 		if callback
 			callback(result)
