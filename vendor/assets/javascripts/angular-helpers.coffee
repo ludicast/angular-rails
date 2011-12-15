@@ -48,7 +48,8 @@ class @AngularModel
 	initialize:->
 		if @hasMany
 			for name, clazz of @hasMany
-				for obj in @[name]
+				association = @[name] or []
+				for obj in association
 					obj.__proto__ = new clazz()
 					obj.initialize?()
 
