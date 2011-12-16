@@ -54,6 +54,16 @@ class @AngularModel
 					obj.__proto__ = new clazz()
 					obj.initialize?()
 
+angular.service "eventuallyWork", (($defer)->
+  eventuallyWork = (func, timeout)->
+    try
+      func()
+    catch e
+      $defer (-> eventuallyWork func, 2*timeout), timeout
+  (func)->
+    eventuallyWork(func, 10)
+), {$inject: ['$defer']}
+
 @autowrap = (clazz, callback)->
 	(result)->
 		result.__proto__ = new clazz()

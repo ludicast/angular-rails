@@ -83,6 +83,13 @@ Another thing added is a `resourceService` function.  This function is called li
      
 This sets up angular services for the listed paths.  Also add to the end all the actions that you want it to support.  So far the accepted actions are 'index', 'update', 'create' and 'destroy'.  If you leave off all actions, it will automatically assume that you want to support all 4.
 
+I added an `eventuallyWork` service.  Basically if you call it with a function as its parameter it will keep running the function until it doesn't throw an exception.  This is mostly useful for cases where you have an inner view that has values based on what is set in its outer view.  When that view is visited via a bookmark there might not be time for the outer view to initialize.   It can be run like this (notice the "fat" arrow):
+
+    eventuallyWork =>
+      for student in this.classroom.students
+        if student.id = $routeParams.student_id
+          this.reportCard = student.report_card
+
 This helper file adds some features to help parse results.
 
 * An `AngularModel` class.  All classes that inherit from this may be used to wrap the results returned from angular.  They also allow you to map hasMany associations like so (haven't needed belongsTo yet myself):
