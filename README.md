@@ -47,65 +47,10 @@ So far we have a controller generator which generates a controller file if you r
 
 This file is empty except for the class declaration, but I will be adding some RESTful controller functionality shortly.
 
-## Angular-Helpers
+## angle-up
 
-In an attempt to DRY up angular apps I added an angular-helpers coffeescript file to the assets path.  So far it has a Router superclass for your main application router.  If you subclass it in Coffeescript like so:
 
-    class @PhotoGalleryCtrl extends Router
-      routes:->
-        {
-          default: '/photographers'
-          '/photographers':
-            template: '<%= asset_path("photographers.html") %>'
-            controller: PhotographersCtrl
-          '/photographers/:photographer_id/galleries':
-            template: '<%= asset_path("galleries.html") %>'
-            controller: GalleriesCtrl
-          '/photographers/:photographer_id/galleries/:gallery_id/photos':
-            template: '<%= asset_path("photos.html") %>'
-            controller: PhotosCtrl
-        }
-
-You will have those routes set up.  All this class needs is a member function called `routes` that returns a hash of routing information.
-
-Note that this class will need to be injected with both the $xhr and the $route object like so:
-
-    PhotoGalleryCtrl.$inject = ['$route', '$xhr']
-
-This is because it sets us some CSRF preventions using $xhr as well.  Note that this information gets thrown into the controller scope, so `@$xhr` and `@$router` are available in inheriting controllers as well (regardless if inheriting explicitly (through `extends`) or implictly (by being nested in a deeper view tag)).
-
-Much of this is ripped from a demo by [Daniel Nelson](https://github.com/centresource/angularjs_rails_demo).
-
-Another thing added is a `resourceService` function.  This function is called like:
-
-	resourceService 'Photos', 'photographers/:photographer_id/galleries/:gallery_id/photos', 'index'
-	resourceService 'SelectedPhotos', 'selected_photos/:selected_photo_id'
-     
-This sets up angular services for the listed paths.  Also add to the end all the actions that you want it to support.  So far the accepted actions are 'index', 'update', 'create' and 'destroy'.  If you leave off all actions, it will automatically assume that you want to support all 4.
-
-I added an `eventuallyWork` service.  Basically if you call it with a function as its parameter it will keep running the function until it doesn't throw an exception.  This is mostly useful for cases where you have an inner view that has values based on what is set in its outer view.  When that view is visited via a bookmark there might not be time for the outer view to initialize.   It can be run like this (notice the "fat" arrow):
-
-    eventuallyWork =>
-      for student in this.classroom.students
-        if student.id = $routeParams.student_id
-          this.reportCard = student.report_card
-
-This helper file adds some features to help parse results.
-
-* An `AngularModel` class.  All classes that inherit from this may be used to wrap the results returned from angular.  They also allow you to map hasMany associations like so (haven't needed belongsTo yet myself):
-
-		class @Todo extends AngularModel
-			schedule:(procrastinationTime)-> # postpone to future 
-
-		class @TodoList extends AngularModel
-			hasMany:
-				todos: Todo
-
-* An `autowrap` function added to global namespace.  This function takes a class to wrap the resource result in and optionally takes a function to pass it in to (i.e. if you need a real success function).  This function is passed in as the success function like so:
-
-		@all_todo_lists = TodoListService.get {}, autowrap(TodoList)
-
-A final thing added to this helper file is initialization of angularjs.  This way, if angularjs is added to asset pipeline, no `ng:autobind` tag needs to be (or should be) added.
+In an attempt to DRY up angular apps I added the angle-up javascript file to the assets path.  [angle-up](https://github.com/ludicast/angle-up) attempts to add some opinions to angular apps.
 
 ## Example Usage
 

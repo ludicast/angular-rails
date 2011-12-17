@@ -9,6 +9,7 @@ class AngularRailsTest < ActiveSupport::TestCase
     assert_not_nil @app.assets["angular.min"]
   end
 	test "angular-helpers.coffee is found as an asset" do
-    assert_not_nil @app.assets["angular-helpers"]
+    assert_not_nil @app.assets["angle-up"]
+		puts  @app.assets["angle-up"]
   end
 end
