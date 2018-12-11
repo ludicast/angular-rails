@@ -2,9 +2,13 @@
 
 This project lets you use angularjs with the yummy Rails 3.1 asset pipeline.  The eventual goal is to have it integrate scaffolding with test support.
 
-## Warning!! Code-Theft :)
+## Warning!! Abandoned Fork
 
-This README (and some of the accompanying code) is being copied/pasted/ripped from the [backbone-rails](http://github.com/codebrew/backbone-rails) project to help bootstrap things.  Later on I'll cut the cord.
+This library hasn't been updated for a while.  Rails 3 is now Rails 5.  Angularjs 1 is now Angular 7.  Use at your peril :).
+
+## Credit to backbone-rails
+
+The initial fork/inspiration was from the [backbone-rails](http://github.com/codebrew/backbone-rails) project.
 
 ## Assumptions
 
